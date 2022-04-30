@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'
 import AdminRotas from './Routes/routes';

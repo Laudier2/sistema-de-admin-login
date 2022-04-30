@@ -26,7 +26,7 @@ const AdminRotas = () => {
         <AppProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route exact path="/" element={<Private><Cadastro /></Private>} />
+                    <Route exact path="/" element={<Cadastro />} />
                     <Route exact path="/login" element={<UserLogin />} />
                     <Route exact path="/form" element={<FormularioCadastro />} />
                 </Routes>

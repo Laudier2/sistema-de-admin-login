@@ -12,7 +12,9 @@ export default function Cadastro() {
 
   const { users, logout, VerUser } = useContext(AppContext)
 
-  const URL = "http://localhost:3001/"
+  console.log(users)
+
+  const URL = "http:15.228.82.63"
 
   /**
    * Esse hook useState esta recebendo o valor do evento onClick e assim
