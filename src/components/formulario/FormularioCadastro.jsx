@@ -18,7 +18,7 @@ export default function FormularioCadastro(props) {
   const [values, setValues] = useState(camposIniciasDeValores);
   const history = useNavigate();
 
-  const URL = "http:15.228.82.63"
+  const URL = "http://15.228.82.63/"
 
   /**
    * Aqui estamos utilizando o onChange para verifica tudo que esta sendo digitado
