@@ -2,23 +2,13 @@ import React, { useEffect, useState } from 'react';
 import api from '../api/api';
 import { createSession } from '../api/api';
 import ConsumeContextData from './SatateDate'
+//import { useNavigate } from 'react-router-dom'
 
 const AppProvider = ({ children }) => {
 
-    /**
-     * Aqui estou usando o useState para guarda o estado, ou melhor dizendo os valores.
-     * Que iremos receber da requisição via axios, para que assim eu possa usar aqui ou em outro componente via props 
-   */
+    const [user, setUser] = useState(null)
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
-
-    /**
-     * Aqui abaixo esto usando um hook do react que o useEffect para uma função asincrona
-     * e dentro desta função estou utilizando o axios para fazer uma requisição get,
-     * e assim listarmos os produtos na tela.
-    */
-
-    //const navigate = useNavigate()
 
     useEffect(() => {
         (async () => {
@@ -29,19 +19,20 @@ const AppProvider = ({ children }) => {
 
     useEffect(() => {
         const recoveredUser = localStorage.getItem('user')
+        const token = localStorage.getItem('token')
 
         if (recoveredUser) {
             setUser(JSON.parse(recoveredUser))
+            api.defaults.headers.Authorization = `Bearer ${token}`
         }
 
         setLoading(false)
     }, [])
 
-    const [user, setUser] = useState(null)
 
-    const login = async (email, password, _id) => {
+    const login = async (email, password) => {
 
-        const response = await createSession(email, password, _id)
+        const response = await createSession(email, password)
 
         console.log('login auth', response.data)
 
@@ -55,8 +46,8 @@ const AppProvider = ({ children }) => {
 
         api.defaults.headers.Authorization = `Bearer ${token}`
 
-        setUser(loggedUser)
 
+        setUser(loggedUser)
     }
 
     const logout = () => {

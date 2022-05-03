@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import FormularioCadastro from '../components/formulario/FormularioCadastro';
 import AppProvider from '../Context/Provaider';
 import UserLogin from '../components/User/Login/Login'
 import Cadastro from '../components/Cadastro/Cadastro'
 import { useContext } from 'react';
 import AppContext from '../Context/SatateDate'
+import './router.css'
 
 const AdminRotas = () => {
 
@@ -12,14 +12,19 @@ const AdminRotas = () => {
         const { auth, loading } = useContext(AppContext)
 
         if (loading) {
-            return <div>Carregando...</div>
+            return (
+                <div className="container">
+                    <img src="lod.gif" alt="img" className="marg" />
+                </div>
+            )
         }
 
         if (!auth) {
             return <Navigate to="/login" />
-        } else {
-            return children
         }
+
+        return children
+
     }
 
     return (
@@ -28,7 +33,6 @@ const AdminRotas = () => {
                 <Routes>
                     <Route exact path="/" element={<Private><Cadastro /></Private>} />
                     <Route exact path="/login" element={<UserLogin />} />
-                    <Route exact path="/form" element={<FormularioCadastro />} />
                 </Routes>
             </BrowserRouter>
         </AppProvider>

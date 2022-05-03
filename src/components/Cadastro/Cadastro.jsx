@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Cadastro() {
 
-  const { users, logout, VerUser } = useContext(AppContext)
+  const { users, logout } = useContext(AppContext)
 
   //console.log(users)
 
@@ -58,7 +58,6 @@ export default function Cadastro() {
           Sistema de Cadastro e Gerenciamento de Usuários
         </h1>
         <button className="btn btn-danger mt-2" onClick={logout}>Logout</button>
-        <button className="btn btn-danger mt-2 ml-5" onClick={VerUser}>Ver</button>
       </section>
       <div className="jumbotron jumbotron-fuid bg-img mt-5"></div>
 

@@ -1,0 +1,6 @@
+.marg{
+  display: flex;
+  margin: auto;
+  align-items: center;
+  margin-top: 160px;
+}
