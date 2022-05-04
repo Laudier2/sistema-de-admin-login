@@ -19,7 +19,6 @@ const UserLogin = () => {
 
     if (password && email) {
       //console.log("submit", { email, password })
-      toast.success("Login realizado com sucesso")
       login(email, password)
       setTimeout(() => {
         navigate("/")

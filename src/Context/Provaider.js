@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../api/api';
 import { createSession } from '../api/api';
 import ConsumeContextData from './SatateDate'
+import { toast } from 'react-toastify';
 //import { useNavigate } from 'react-router-dom'
 
 const AppProvider = ({ children }) => {
@@ -33,6 +34,7 @@ const AppProvider = ({ children }) => {
     const login = async (email, password) => {
 
         const response = await createSession(email, password)
+        toast.success("Login realizado com sucesso")
 
         console.log('login auth', response.data)
 
