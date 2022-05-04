@@ -12,25 +12,13 @@ const UserLogin = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const Teste = () => {
-    for (var i = 0; i < users.length; i++) {
-
-      const res = users[i].email === email ? email : undefined;
-
-      console.log(res)
-      return res;
-    }
-  }
-
-  const res = Teste()
-
   const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault()
     //console.log("submit", { email, password })
 
-    if (email === res && password === "123456") {
-      console.log("submit", { email, password })
+    if (password && email) {
+      //console.log("submit", { email, password })
       toast.success("Login realizado com sucesso")
       login(email, password)
       setTimeout(() => {
