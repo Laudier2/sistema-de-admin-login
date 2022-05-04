@@ -34,15 +34,18 @@ const AppProvider = ({ children }) => {
     const login = async (email, password) => {
 
         const response = await createSession(email, password)
-        toast.success("Login realizado com sucesso")
 
         console.log('login auth', response.data)
 
         const loggedUser = response.data.data.email
         const token = response.data.data.token
+        const imagem = response.data.data.imagem
+        const name = response.data.data.name
         //const token = response.data.data.
 
         localStorage.setItem('user', JSON.stringify(loggedUser))
+        localStorage.setItem('imagem', JSON.stringify(imagem))
+        localStorage.setItem('name', JSON.stringify(name))
         localStorage.setItem('token', token)
         //localStorage.setItem('token', id)
 

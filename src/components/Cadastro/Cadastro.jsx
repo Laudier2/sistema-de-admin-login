@@ -12,6 +12,11 @@ export default function Cadastro() {
 
   const { users, logout } = useContext(AppContext)
 
+  const imagem = localStorage.getItem("imagem")
+  const name = localStorage.getItem("name")
+  const img = JSON.parse(imagem)
+  const Name = JSON.parse(name)
+
   //console.log(users)
 
   const URL = "http://15.228.82.63/"
@@ -54,13 +59,16 @@ export default function Cadastro() {
   return (
     <div>
       <section>
-        <h1 className="h5 col-md-12 mrg titolo text-white">
+        <h1 className="h5 col-md-12 titolo text-white">
           Sistema de Cadastro e Gerenciamento de Usuários
         </h1>
-        <button className="btn btn-danger mt-2" onClick={logout}>Logout</button>
+        <button className="btn btn-danger mt-5 ml-3 btn-p" onClick={logout}>Logout</button>
       </section>
       <div className="jumbotron jumbotron-fuid bg-img mt-5"></div>
-
+      <img src={img} alt="img" className="admin" />
+      <p className="Name">
+        <stron>{Name}</stron>
+      </p>
       <div className="row">
         <div className="col-md-5">
           <FormularioCadastro {...{ idAtual, users }} />
@@ -75,6 +83,7 @@ export default function Cadastro() {
                 </th>
                 <th scope="col">Usuario</th>
                 <th scope="col">E-mail</th>
+                <th scope="col">Phone</th>
               </tr>
             </thead>
 
@@ -134,10 +143,9 @@ export default function Cadastro() {
                       </div>
                     </div>
                   </th>
-                  <td>
-                    {r.name}
-                  </td>
+                  <td>{r.name}</td>
                   <td>{r.email}</td>
+                  <td>{r.phone}</td>
                   <td>
                     <Link
                       to="/"

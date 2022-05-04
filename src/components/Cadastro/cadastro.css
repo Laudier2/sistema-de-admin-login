@@ -5,6 +5,27 @@
   color: rgb(26, 27, 27);
 }
 
+.Name{
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  margin-top: -128px;
+  margin-left: 908px;
+  margin-bottom: 60px;
+}
+
+.btn-p{
+  position: absolute;
+}
+
+.admin{
+  width: 8%;
+  margin-right: 15px;
+  border-radius: 50px;
+  margin-top: -286px;
+  margin-left: 900px;
+}
+
 .msg1 {
   margin-top: -30px;
 }
@@ -56,5 +77,4 @@
 
 .mrg {
   margin-top: 5px;
-  position: absolute;
 }

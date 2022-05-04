@@ -18,7 +18,7 @@ export default function FormularioCadastro(props) {
   const [values, setValues] = useState(camposIniciasDeValores);
   const history = useNavigate();
 
-  const URL = api.get('/')
+  const URL = "http://15.228.82.63/"
 
   /**
    * Aqui estamos utilizando o onChange para verifica tudo que esta sendo digitado
@@ -115,7 +115,7 @@ export default function FormularioCadastro(props) {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-envelope  p-1 mt-2 text-info" />
+              <i class="fa-solid fa-image  p-1 mt-2 text-info"></i>
             </div>
           </div>
           <input
@@ -145,13 +145,13 @@ export default function FormularioCadastro(props) {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-envelope  p-1 mt-2 text-info" />
+              <i class="fa-solid fa-key p-1 mt-2 text-info"></i>
             </div>
           </div>
           <input
             type="password"
             className="form-control"
-            placeholder="Telefone"
+            placeholder="Password"
             min="0"
             name="password"
             value={values.password}
