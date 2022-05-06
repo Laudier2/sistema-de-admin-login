@@ -35,13 +35,17 @@ const AppProvider = ({ children }) => {
 
         const response = await createSession(email, password)
 
-        console.log('login auth', response.data)
+        //console.log('login auth', response.data)
+
+        toast.success("Login efetuado com sucesso, aguarde mais uns segubdos...")
 
         const loggedUser = response.data.data.email
         const token = response.data.data.token
         const imagem = response.data.data.imagem
         const name = response.data.data.name
         //const token = response.data.data.
+
+        //console.log(imagem)
 
         localStorage.setItem('user', JSON.stringify(loggedUser))
         localStorage.setItem('imagem', JSON.stringify(imagem))
@@ -51,7 +55,6 @@ const AppProvider = ({ children }) => {
 
         api.defaults.headers.Authorization = `Bearer ${token}`
 
-
         setUser(loggedUser)
     }
 
@@ -60,6 +63,8 @@ const AppProvider = ({ children }) => {
         setUser(null)
         localStorage.removeItem('user')
         localStorage.removeItem('token')
+        localStorage.removeItem('imagem')
+        localStorage.removeItem('name')
         api.defaults.headers.Authorization = null;
     }
 

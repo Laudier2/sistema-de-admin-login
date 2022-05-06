@@ -6,12 +6,9 @@
 }
 
 .Name{
-  margin-left: 15px;
-  color: white;
   font-weight: bold;
-  margin-top: -128px;
-  margin-left: 908px;
-  margin-bottom: 60px;
+  margin-left: 90px;
+  margin-top: -200px;
 }
 
 .btn-p{
@@ -19,11 +16,10 @@
 }
 
 .admin{
-  width: 8%;
-  margin-right: 15px;
+  width: 20%;
   border-radius: 50px;
-  margin-top: -286px;
-  margin-left: 900px;
+  margin-left: 7%;
+  box-shadow: 0 2px 6px 2px white;
 }
 
 .msg1 {

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const UserLogin = () => {
 
-  const { auth, login, users } = useContext(StoreContext)
+  const { login } = useContext(StoreContext)
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -19,19 +19,19 @@ const UserLogin = () => {
 
     if (password && email) {
       //console.log("submit", { email, password })
+      const tk = localStorage.getItem('token')
       login(email, password)
       setTimeout(() => {
         navigate("/")
       }, 6280)
-    } else {
-      navigate("/login")
       toast.error("Usuario ou senha invalida tente novamente")
     }
+
   }
 
   return (
     <div className="user-login">
-      <p className="text-light">{String(auth)}</p>
+      {/*<p className="text-light">{String(auth)}</p>*/}
       <h1 className="user-login__title">Acessar o Sistema</h1>
       <form autoComplete="nope" onSubmit={handleSubmit}>
         <div className="user-login__form-control">
@@ -40,7 +40,6 @@ const UserLogin = () => {
             id="email"
             type="text"
             name="email"
-            autoComplete="off"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -64,6 +63,11 @@ const UserLogin = () => {
           Entrar
         </button>
       </form>
+      <div className="container">
+        <a href="/form" target="_blank" className="mrg-a">
+          Ainda não tenho conta
+        </a>
+      </div>
     </div>
   );
 };

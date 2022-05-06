@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import FormularioCadastro from '../formulario/FormularioCadastro';
 import './cadastro.css';
 import axios from 'axios';
@@ -12,12 +12,7 @@ export default function Cadastro() {
 
   const { users, logout } = useContext(AppContext)
 
-  const imagem = localStorage.getItem("imagem")
-  const name = localStorage.getItem("name")
-  const img = JSON.parse(imagem)
-  const Name = JSON.parse(name)
-
-  //console.log(users)
+  console.log()
 
   const URL = "http://15.228.82.63/"
 
@@ -29,8 +24,23 @@ export default function Cadastro() {
    */
   const [idAtual, setIdAtual] = useState('');
   const [item, setItem] = useState('');
+  const [imagem, setImagem] = useState([]);
+  const [name, setName] = useState([]);
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    (async () => {
+      const imagem2 = await localStorage.getItem("imagem")
+      const name2 = await localStorage.getItem("name")
+      const nameN = await JSON.parse(name2)
+      const imgN = await JSON.parse(imagem2)
+      setImagem(imgN)
+      setName(nameN)
+    })()
+  }, [])
+
+  //console.log(name)
 
   /**
    * Essa função é responsável por apaga um usuario via id,
@@ -65,25 +75,27 @@ export default function Cadastro() {
         <button className="btn btn-danger mt-5 ml-3 btn-p" onClick={logout}>Logout</button>
       </section>
       <div className="jumbotron jumbotron-fuid bg-img mt-5"></div>
-      <img src={img} alt="img" className="admin" />
-      <p className="Name">
-        <stron>{Name}</stron>
-      </p>
+
       <div className="row">
         <div className="col-md-5">
           <FormularioCadastro {...{ idAtual, users }} />
         </div>
         <div className="col-md-7 ">
-          <h2 className="titolo mx-auto">Lista de Usuários na database</h2>
+          <h2 className="titolo mx-auto">Lista de Usuários na database <th scope="col">
+            <img src={imagem} alt="img" className="admin" />
+          </th></h2>
           <table class="table">
             <thead>
               <tr className="text-white">
                 <th scope="col">
-                  <i className="fas fa-coins" />
+                  <strong className="text-white">Olá {name}</strong>
                 </th>
                 <th scope="col">Usuario</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Phone</th>
+                <th scope="col">
+                  <i className="fas fa-coins" />
+                </th>
               </tr>
             </thead>
 
