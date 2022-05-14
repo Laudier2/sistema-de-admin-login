@@ -12,9 +12,7 @@ export default function Cadastro() {
 
   const { users, logout } = useContext(AppContext)
 
-  console.log()
-
-  const URL = "http://15.228.82.63/"
+  //console.log({ users })
 
   /**
    * Esse hook useState esta recebendo o valor do evento onClick e assim
@@ -26,6 +24,8 @@ export default function Cadastro() {
   const [item, setItem] = useState('');
   const [imagem, setImagem] = useState([]);
   const [name, setName] = useState([]);
+
+  //console.log(idAtual)
 
   const navigate = useNavigate()
 
@@ -46,9 +46,12 @@ export default function Cadastro() {
    * Essa função é responsável por apaga um usuario via id,
    * que esta vindo via evento do onClick
    */
-  const Apagausuario = (id) => {
-    axios //Esse process.env.REACT_APP_API_URL é uma variave de ambiente que contem a url da api
-      .delete(URL + id)
+  const Apagausuario = async (id) => {
+
+    //const URL = `http:localhost:3001/${}`//https://api-usr.herokuapp.com/"
+
+    await axios //Esse process.env.REACT_APP_API_URL é uma variave de ambiente que contem a url da api
+      .delete(`http:localhost:3001/${id}`)
       .then((res) => {
         toast.success('O usuário foi deletado com sucesso');
         setTimeout(() => {

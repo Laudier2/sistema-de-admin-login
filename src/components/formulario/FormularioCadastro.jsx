@@ -1,6 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../../api/api';
 import { toast } from 'react-toastify';
 
 /**
@@ -18,7 +18,7 @@ export default function FormularioCadastro(props) {
   const [values, setValues] = useState(camposIniciasDeValores);
   const history = useNavigate();
 
-  const URL = "http://15.228.82.63/"
+  const URL = "http:localhost:3001/"//https://api-usr.herokuapp.com/"
 
   /**
    * Aqui estamos utilizando o onChange para verifica tudo que esta sendo digitado
@@ -37,7 +37,7 @@ export default function FormularioCadastro(props) {
    */
   useEffect(() => {
     if (props.idAtual) {
-      api
+      axios
         .get(`/admin/${props.idAtual}`)
         .then((res) => {
           setValues(res.data);
@@ -78,18 +78,12 @@ export default function FormularioCadastro(props) {
         }
         //Correção de eero
         history("/")
-        setTimeout(() => {
-          window.location.reload()
-        }, 6250)
+
       })
       .catch((err) => {
         toast.error('Os campos sao obrigatorio ou usuario email ja cadastrado, tente novamente');
         //Correção
         history('/');
-        setTimeout(() => {
-          window.location.reload()
-        }, 6250)
-
       });
   }
 

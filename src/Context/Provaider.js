@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import api from '../api/api';
-import { createSession } from '../api/api';
+//import api from '../api/api';
+//import { createSession } from '../api/api';
 import ConsumeContextData from './SatateDate'
 import { toast } from 'react-toastify';
-//import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+
+const api = axios.create({
+    baseURL: "http:localhost:3000"//"https://api-usr.herokuapp.com/"
+})
+
+const createSession = async (email, password) => {
+    return api.post("http://localhost:3000/auth", { email, password })
+}
 
 const AppProvider = ({ children }) => {
 
@@ -13,7 +21,7 @@ const AppProvider = ({ children }) => {
 
     useEffect(() => {
         (async () => {
-            const req = await api.get('/')
+            const req = await axios.get("http://localhost:3000/")
             setUsers(req.data)
         })()
     }, [])
@@ -30,6 +38,7 @@ const AppProvider = ({ children }) => {
         setLoading(false)
     }, [])
 
+    console.log(users)
 
     const login = async (email, password) => {
 

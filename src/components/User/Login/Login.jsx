@@ -19,12 +19,15 @@ const UserLogin = () => {
 
     if (password && email) {
       //console.log("submit", { email, password })
-      const tk = localStorage.getItem('token')
-      login(email, password)
-      setTimeout(() => {
-        navigate("/")
-      }, 6280)
-      toast.error("Usuario ou senha invalida tente novamente")
+      //const tk = localStorage.getItem('token')
+      try {
+        login(email, password)
+      } catch (error) {
+        setTimeout(() => {
+          navigate("/")
+        }, 6280)
+        toast.error("Usuario ou senha invalida tente novamente", error)
+      }
     }
 
   }
@@ -64,7 +67,7 @@ const UserLogin = () => {
         </button>
       </form>
       <div className="container">
-        <a href="/form" target="_blank" className="mrg-a">
+        <a href="/form" className="mrg-a">
           Ainda não tenho conta
         </a>
       </div>
